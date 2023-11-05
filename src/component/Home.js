@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Stores } from "./component/stores";
+import { Stores } from "./stores";
 const Home = () => {
     
     const [query,setQuery]= useState("");

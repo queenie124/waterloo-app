@@ -8,7 +8,7 @@ const Profile = () => {
     setCurrentForm(formName);
   }
   return (
-    <div className="loginpage">
+    <div className="profilePage">
       {
         currentForm === "login" ? <Login onFormSwitch={toggleForm}/> : <Register onFormSwitch={toggleForm}/>
       }
