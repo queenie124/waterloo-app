@@ -1,28 +1,29 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
 
-const Comment = (props) => {
+// const Comment = (props) => {
   
-  const [comment, setComment] = useState("");
+//   const [comment, setComment] = useState("");
 
-  const submitHandler = (event) => {
-    event.preventDefault();
-    console.log(comment);
-  };
+//   const handleSubmit = (event) => {
+//     event.preventDefault();
+//     console.log(comment);
+//     setComment('');
+//   };
 
-  return (
-    <div className="CommentPage">
-      <div className="CommentForm">
-        <form onSubmit={submitHandler}>
-        <label>
-          Please enter your comment for {props.resName} here:
-          <textarea value={comment} onChange={(e) => setComment(e.target.value)} />
-        </label>
-        <button type="submit">Submit</button>
-      </form>
-      </div>
-    </div>
+//   return (
+//     <div className="CommentPage">
+//       <div className="CommentForm">
+//         <form onSubmit={handleSubmit}>
+        
+//           <label>Please enter your comment for {props.resName} here:</label>
+//           <textarea value={comment} onChange={(e) => setComment(e.target.value)} />
+        
+//         <button type="submit">Submit</button>
+//       </form>
+//       </div>
+//     </div>
     
-  );
-};
+//   );
+// };
 
-export default Comment;
+// export default Comment;

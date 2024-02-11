@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom'; // React Router
+import { BrowserRouter as Router, Routes, Route, Redirect, Switch } from 'react-router-dom'; // React Router
 import Layout from './component/Layout'; // Navigation Layout Page
 import Home from './component/Home'; // Home Page
+import SignUp from './component/SignUp';
+import LoginPage from './component/LoginPage';
 import Profile from "./component/Profile"; // Profile Page
 import SpinningWheel from './component/SpinWheel';
 import './App.css'; // Main Page Style
@@ -11,18 +13,36 @@ import './App.css'; // Main Page Style
 function App() {
   
   return (
-    <div className="App">
-      <SpinningWheel />
-      <BrowserRouter>
+    <div className='App'>
+      <Router>
         <Routes>
-          <Route path='/' element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path='profile' element={<Profile />} />
-          </Route>
+          <Route path="/" element={<SpinningWheel />} />
+          <Route path="/Home" element={<Home />} />
+          <Route path="/Login" element={<LoginPage />} />
+          <Route path="/Signup" element={<SignUp />} />
+          <Route path="/Profile" element={<Profile />} />
         </Routes>
-      </BrowserRouter>
+      </Router>
     </div>
-  );
+  )
+
+  // return (
+  //   <div className="App">
+  //     <div className="Wheel">
+  //       <SpinningWheel />
+  //     </div>
+  //     <div>
+  //       <BrowserRouter>
+  //         <Routes>
+  //           <Route path='/' element={<Layout />}>
+  //             <Route index element={<Home />} />
+  //             <Route path='profile' element={<Profile />} />
+  //           </Route>
+  //         </Routes>
+  //       </BrowserRouter>
+  //     </div>
+  //   </div>
+  // );
 };
 
 export default App;

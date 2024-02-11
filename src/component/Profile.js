@@ -1,17 +1,27 @@
 import React, { useState } from "react";
-import { Login } from "./Login";
-import { Register } from "./Register";
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
-    const [currentForm, setCurrentForm] = useState('login');
-    const toggleForm = (formName) => {
-    setCurrentForm(formName);
+  const navigate = useNavigate();
+  const redirectToHome = () => {
+    navigate('/');
   }
+  const redirectToWheel = () => {
+    navigate('/SpinWheel');
+  }
+  const redirectToSignup = () => {
+    navigate('/Signup')
+  }
+
+  // const [currentForm, setCurrentForm] = useState('login');
+  // const toggleForm = (formName) => {
+  //   setCurrentForm(formName);
+  // }
   return (
     <div className="profilePage">
-      {
-        currentForm === "login" ? <Login onFormSwitch={toggleForm}/> : <Register onFormSwitch={toggleForm}/>
-      }
+      <button type='button' onClick={redirectToHome}>Home</button>
+      <button type='button' onClick={redirectToWheel}>Spin Wheel</button>
+      <button type="button" onClick={redirectToSignup}>Log-in / Sign-up</button>
       </div>
   )
 };

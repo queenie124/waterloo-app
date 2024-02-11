@@ -1,0 +1,15 @@
+nums = [2,3]
+
+out = []
+for i in range (len(nums)):
+    for j in range (len(nums)):
+        total = 1
+        if j == i:
+            continue
+        if nums[j] == 0:
+            total = 0
+            break
+        total = total*nums[j]
+    out.append(total)
+print(out)
+
