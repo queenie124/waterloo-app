@@ -21,8 +21,11 @@ function LoginPage() {
         })
 
         if (error) {
-            console.log("Login Failed")
+            alert("Login failed: ", error.message);
+            console.log("Login Failed", error);
             return;
+        } else {
+            alert("Login Successful.");
         }
 
         navigate('/Home');

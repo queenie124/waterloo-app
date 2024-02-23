@@ -8,7 +8,7 @@ function SignUp() {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [email, setEmail] = useState('');
-    const redirectToSignup = () => {
+    const redirectToLogin = () => {
         navigate('/Login'); // Use the path you've defined for your SignUp component
     };
 
@@ -57,7 +57,7 @@ function SignUp() {
                     <input type="email" id="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
                     <br />
                     <button type="submit">Sign up</button><br />
-                    <button type="button" onClick={redirectToSignup}>Log in</button>
+                    <button type="button" onClick={redirectToLogin}>Already have an account, Log in</button>
                 </form>
             </div>
         </div>
