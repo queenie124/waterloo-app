@@ -55,7 +55,7 @@ const SpinningWheel = () => {
     const submitHandler = async (event) => {
         event.preventDefault();
         console.log(comment);
-        const { data: { user } } = await supabase.auth.getUser()
+        const { data: { user } } = await supabase.auth.getUser();
         if (user) {
             console.log("user", user);
         } else {
@@ -104,86 +104,72 @@ const SpinningWheel = () => {
         /* Spin and show popup*/
         <div className='Spin-popup'>
             <div className="Wheel">
-                {wheelOpen && ( 
+                {/* {wheelOpen && (  */}
                     <WheelComponent
                         isOpen={wheelOpen}
                         segments={segments}
                         segColors={segColors}
-                        winningSegment="MM"
+                        winningSegment=""
                         onFinished={(winner) => onFinished(winner)}
                         primaryColor="black"
                         contrastColor="white"
                         buttonText="Start"
                         isOnlyOnce={false}
-                        size={190}
+                        size={200}
                         upDuration={500}
                         downDuration={600}
-                        fontFamily="Helvetica"
+                        fontFamily="Arial"
                     />
-                    )}
+                    {/* )} */}
             </div>
             
             <div className='popup'>
                 <Modal
                     open={modalOpen}
-                    onClose={handleModalClose}
+                    //onClose={handleModalClose}
                     aria-labelledby="modal-modal-title"
-                    aria-describedby="modal-modal-description">
-                        <Box sx={{ width: 300, height: 200, bgcolor: 'background.paper', borderRadius: '10px' }}>
-                            {isLoggedIn ? (
-                                <div className='commentForm' style={{ backgroundColor: 'white', padding: '20px' }}>
-                                    <form onSubmit={submitHandler}>
-                                        <button onClick={handleModalClose} aria-label="Close">
-                                            <CloseIcon />
-                                        </button>
-                                        <div>
-                                            <label>
-                                                Please enter your comment for {winner} here:
-                                            </label>
-                                            <textarea value={comment} onChange={(e) => setComment(e.target.value)} />
+                    aria-describedby="modal-modal-description"
+                >
+                    <Box
+                        style={{ 
+                            display: 'flex', 
+                            justifyContent: 'center', 
+                            alignItems: 'center', 
+                            height: '100vh' 
+                        }}
+                    >
+                        {isLoggedIn ? (
+                            <div>
+                                <form onSubmit={submitHandler}>
+                                    <div className='commentForm'>
+                                        <div className='formTop'>
+                                            <div className='formlabel'>
+                                                <label>
+                                                    Please enter your comment for {winner} here:
+                                                </label>
+                                            </div>
+                                            <div id='close-popup'>
+                                                <button onClick={handleModalClose} aria-label="Close">
+                                                    <CloseIcon />
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div className='formInput'>
+                                            <textarea value={comment} onChange={(e) => setComment(e.target.value)} required/>
+                                        </div>
+                                        <div id='submitButton'>
                                             <Button type="submit">Submit</Button>
                                         </div>
-                                    </form>
-                                </div>) : (
-                                    <div>
-                                        <h2>Please sign up to comment for {winner}:</h2>
-                                        <button type='button' onClick={redirectToSignup}>Sign Up</button>
                                     </div>
-                                    )}
-                        </Box>
+                                </form>
+                            </div>) : (
+                                <div className='signupNotice'>
+                                    <h2>Please sign-in to comment for {winner}:</h2>
+                                    <button type='button' onClick={redirectToSignup}>Sign-in</button>
+                                </div>
+                                )}
+                    </Box>
                 </Modal>
-            {/* <Modal 
-                open={modalOpen} 
-                onClose={handleModalClose}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description">
-                    {isLoggedIn ? (<div className='commentForm' style={{ backgroundColor: 'white', padding: '20px' }}>
-                    <form onSubmit={submitHandler}>
-                        <button onClick={handleModalClose} aria-label="Close">
-                                <CloseIcon />
-                        </button>
-                        <div>
-                        <label>
-                        Please enter your comment for {winner} here:
-                        </label>
-                        <textarea value={comment} onChange={(e) => setComment(e.target.value)} />
-                            <Button type="submit">Submit</Button>
-                        </div>
-                    </form>
-                </div>) : (<div><p>User not Logged In</p></div>)}
-            </Modal> */}
-
-            {/* <div>
-                <Router>
-                    <Routes>
-                        <Route path='/' element={<Layout />}>
-                        <Route index element={<Home />} />
-                        <Route path='profile' element={<Profile />} />
-                        </Route>
-                    </Routes>
-                </Router>
-            </div> */}
-
             </div>
         </div> 
     )

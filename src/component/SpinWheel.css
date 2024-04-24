@@ -1,4 +1,108 @@
-.Wheel {
-    font-family: sans-serif;
-    text-align: center;
+.Spin-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5); 
 }
+  
+.Wheel {
+  width: 100%;
+  height: 100%;
+  max-width: 600px; /* Adjust the maximum width as needed */
+  max-height: 600px; /* Adjust the maximum height as needed */
+}
+
+.commentForm {
+  background-color: #f9f9f9;
+  padding: 20px 30px 20px 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+}
+
+.formTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.formlabel {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#close-popup button {
+  background: none;
+  border: none;
+  padding: 0px;
+  cursor: pointer;
+  color : black;
+}
+
+.formInput textarea {
+  width: 95%;
+  height: 120px;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #000000;
+  font-size: 14px;
+  resize: vertical;
+  margin-bottom: 15px;
+}
+
+#submitButton {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+#submitButton button {
+  background-color: #1c8152;
+  color: #fff;
+  border: none;
+  padding: 5px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#submitButton button:hover {
+  background-color: #11ad5f;
+}
+
+h2 {
+  margin-bottom: 10px;
+}
+
+.signupNotice {
+  background-color: #f9f9f9;
+  padding: 10px 30px 20px 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+}
+
+.signupNotice button {
+  background-color: #1c8152;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.signupNotice button:hover {
+  background-color: #11ad5f;
+}
+
+ 
+  

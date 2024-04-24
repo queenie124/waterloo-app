@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Stores, upsertStore } from "./stores";
+import { storeDetail } from './Layout';
 import { useNavigate } from 'react-router-dom';
-import { Store } from '@mui/icons-material';
+import './Home.css';
 const Home = () => {
 
     // // updates restaurant table in database
@@ -12,6 +13,9 @@ const Home = () => {
     // }, []);
 
     const navigate = useNavigate();
+    const redirectToHome = () => {
+        navigate('/Home');
+    }
     const redirectToProfile = () => {
         navigate('/Profile');
     }
@@ -22,27 +26,41 @@ const Home = () => {
     const [query,setQuery]= useState("");
     //console.log(Stores.filter(store=>store.name.toLowerCase().includes(""))); 
 
-    return(
-        <div>
-            <button type='button' onClick={redirectToProfile}>Profile</button>
-            <button type='button' onClick={upsertStore}>Upsert Stores</button>
-            <button type='button' onClick={redirectToWheel}>Spin Wheel</button>
-            <input 
-                type='text'
-                placeholder="search..."
-                className="search"
-                onChange={e => setQuery(e.target.value)}/> 
-            <ul className="list"> 
-                {Stores.filter(
-                    store => store.name.toLowerCase().includes(query)
-                    ).map(
-                        (store) => (<li key={store.id} className="listItem"> {store.name} </li>))}
-            </ul>
+    useEffect(() => {
+        upsertStore();
+    }, []);
 
-
+    return (
+        <div className='home'>
+            <div className='navbar'>
+                <button type='button' onClick={redirectToHome} id='defaultOpen'>Home</button>
+                <button type='button' onClick={redirectToProfile}>Profile</button>
+                <button type='button' onClick={redirectToWheel}>Spin Wheel</button>
+            </div>
+            <div className='search-list'>
+                <input 
+                    type='text'
+                    placeholder="search..."
+                    className="search"
+                    onChange={e => setQuery(e.target.value)}
+                />
+                <ul className="list"> 
+                    {Stores.filter(store => store.name.toLowerCase().includes(query)).map(store => (
+                        <li key={store.id} className="listItem">
+                            <a href="#" onClick={() => storeDetail(store)}>{store.name}</a>
+                        </li>
+                    ))}
+                </ul>
+                {/* <ul className="list"> 
+                        {Stores.filter(
+                            store => store.name.toLowerCase().includes(query)
+                            ).map(
+                                (store) => (<li key={store.id} className="listItem"> {store.name} </li>))}
+                </ul> */}
+            </div>
+            {/* <button type='button' onClick={upsertStore}>Upsert Stores</button> */}
         </div>
-        
-    )
+    );
 };
 
 export default Home;

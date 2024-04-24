@@ -29,7 +29,7 @@ input[type="text"], input[type="password"], input[type="email"] {
     border-radius: 5px;
 }
 
-button {
+.SignUp button {
     margin: 5px;
     width: 100%;
     padding: 10px;
@@ -40,6 +40,22 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+.SignUp button:hover {
     background-color: #003d82;
 }
+
+.Loginpage button {
+    margin: 5px;
+    width: 100%;
+    padding: 10px;
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.Loginpage button:hover {
+    background-color: #003d82;
+}
+

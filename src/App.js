@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Redirect, Switch } from 'react-router-dom'; // React Router
-import Layout from './component/Layout'; // Navigation Layout Page
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // React Router
 import Home from './component/Home'; // Home Page
 import SignUp from './component/SignUp';
 import LoginPage from './component/LoginPage';

@@ -27,6 +27,7 @@ export const Stores = [
 ]
 
 export const upsertStore = async () => {
+    console.log("upserting stores");
     const tableName = 'restaurants'
     Stores.forEach(async store => {
         try {

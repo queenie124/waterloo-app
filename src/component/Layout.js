@@ -1,18 +1,14 @@
-import React from 'react';
-import { Outlet, Link } from "react-router-dom";
+import { supabase } from "../supabaseClient";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-const Layout = () => {
+// Attempt to create a new page for the store detail, DOES NOT WORK YET!!!
+export const storeDetail = (store) => {
+    console.log(store);
     return (
-        <div className='nav'>
-            <nav>
-                <Link to="/">Home</Link>
-                <Link to="/profile">Profile</Link>
-            </nav>
-
-            <Outlet />
+        <div>
+            <h1>{store.name}</h1>
+            <p>{store.location}</p>
         </div>
-        
     )
-};
-
-export default Layout;
+}
