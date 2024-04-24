@@ -5,6 +5,7 @@ import SignUp from './component/SignUp';
 import LoginPage from './component/LoginPage';
 import Profile from "./component/Profile"; // Profile Page
 import SpinningWheel from './component/SpinWheel';
+import AccountForm from './component/AccountForm';
 import './App.css'; // Main Page Style
 
 
@@ -20,6 +21,7 @@ function App() {
           <Route path="/Login" element={<LoginPage />} />
           <Route path="/Signup" element={<SignUp />} />
           <Route path="/Profile" element={<Profile />} />
+          <Route path="/AccountForm" element={<AccountForm />} />
         </Routes>
       </Router>
     </div>

@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Stores, upsertStore } from "./stores";
-import { storeDetail } from './Layout';
+import StoreDetail from "./Layout";
 import { useNavigate } from 'react-router-dom';
+import { Button } from '@mui/material';
+import Navbar from './Navbar';
 import './Home.css';
 const Home = () => {
 
@@ -32,11 +34,12 @@ const Home = () => {
 
     return (
         <div className='home'>
-            <div className='navbar'>
+            <Navbar />
+            {/* <div className='navbar'>
                 <button type='button' onClick={redirectToHome} id='defaultOpen'>Home</button>
                 <button type='button' onClick={redirectToProfile}>Profile</button>
                 <button type='button' onClick={redirectToWheel}>Spin Wheel</button>
-            </div>
+            </div> */}
             <div className='search-list'>
                 <input 
                     type='text'
@@ -47,7 +50,7 @@ const Home = () => {
                 <ul className="list"> 
                     {Stores.filter(store => store.name.toLowerCase().includes(query)).map(store => (
                         <li key={store.id} className="listItem">
-                            <a href="#" onClick={() => storeDetail(store)}>{store.name}</a>
+                            <StoreDetail store={store} />
                         </li>
                     ))}
                 </ul>

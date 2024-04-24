@@ -1,30 +1,32 @@
 import React, { useState, useEffect } from "react";
 import { supabase } from "../supabaseClient";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
+import Navbar from "./Navbar";
 import "./Profile.css";
 
 const Profile = () => {
-  const navigate = useNavigate();
-  const redirectToHome = () => {
-    navigate('/Home');
-  }
-  const redirectToProfile = () => {
-    navigate('/Profile');
-  }
-  const redirectToSignup = () => {
-    navigate('/Signup')
-  }
+  // const navigate = useNavigate();
+  // const redirectToHome = () => {
+  //   navigate('/Home');
+  // }
+  // const redirectToProfile = () => {
+  //   navigate('/Profile');
+  // }
+  // const redirectToSignup = () => {
+  //   navigate('/Signup')
+  // }
 
-  const handleSignOut = async () => {
-    const { error } = await supabase.auth.signOut();
-    if (error) {
-      alert("Sign out failed: ", error.message);
-      return;
-    } else {
-      console.log("Sign out successful");
-      redirectToSignup();
-    }
-  }
+  // const handleSignOut = async () => {
+  //   const { error } = await supabase.auth.signOut();
+  //   if (error) {
+  //     alert("Sign out failed: ", error.message);
+  //     return;
+  //   } else {
+  //     console.log("Sign out successful");
+  //     redirectToSignup();
+  //   }
+  // }
+
   // Get user information
 
   const [userInfo, setUserInfo] = useState({});
@@ -55,8 +57,22 @@ const Profile = () => {
     fetchUser();
   }, []);
 
-  console.log("userInfo", userInfo);
-  console.log("userInfo.username", userInfo.username);
+  // console.log("userInfo", userInfo);
+  // console.log("userInfo.username", userInfo.username);
+
+  // const handleDelete = async () => {
+  //   const { data: { user } } = await supabase.auth.getUser();
+  //   if (user) {
+  //     console.log("user", user);
+  //   } else {
+  //     console.log("user not found");
+  //   }
+  //   try {
+  //     const {data, error } = await supabase.auth.admin.deleteUser(user.id);
+  //   } catch (error) {
+  //     console.error('Error deleting user:', error.message);
+  //   }
+  // };
 
   // console.log("id", user.id);
 
@@ -67,20 +83,17 @@ const Profile = () => {
   // }
   return (
     <div className="profile-page">
-      <div className="navbar">
-        <button type='button' onClick={redirectToHome}>Home</button>
-        <button type='button' onClick={redirectToProfile}>Profile</button>
-        <button type="button" onClick={handleSignOut}>Sign Out</button>
-      </div>
-
-      <div className="profile">
-        <h1>Profile</h1>
-        <div className="profile-info">
-          <p>Username: {userInfo.username}</p>
-          <p>Id: {userInfo.id}</p>
-        </div>
-      </div>
-
+      <Navbar />
+      {
+        userInfo.username ? 
+        <div className="profile">
+          <h1>Profile</h1>
+          <div className="profile-info">
+            <p>Username: {userInfo.username}</p>
+            <p>Id: {userInfo.id}</p>
+          </div>
+        </div> : <></>
+      }
     </div>
   )
 };
